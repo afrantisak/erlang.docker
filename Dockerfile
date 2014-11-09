@@ -8,9 +8,15 @@ RUN apt-get install -y curl git build-essential libncurses5-dev openssl libssl-d
 RUN curl -O https://raw.githubusercontent.com/spawngrid/kerl/master/kerl
 RUN chmod +x kerl
 RUN sudo mv kerl /usr/bin
+RUN kerl update releases
 
 # install erlang using kerl
-RUN kerl build 17.3 r17.3
-RUN kerl install r17.3 /usr/local/bin
+RUN KERL_CONFIGURE_OPTIONS=--enable-hipe kerl build 17.3 17.3.hipe
+RUN kerl install 17.3.hipe /usr/lib/erlang.kerl.17.3.hipe
+RUN kerl cleanup all
+RUN rm -f /.kerl/archives/*.tar.gz
 
-CMD . /usr/local/bin/activate
+# configure it as the default erlang
+RUN ln -s /usr/lib/erlang.kerl.17.3.hipe /usr/lib/erlang
+ENV PATH /usr/lib/erlang/bin:$PATH
+
