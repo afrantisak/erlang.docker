@@ -13,4 +13,4 @@ Docker image is at https://registry.hub.docker.com/u/afrantisak/kerl.17.3/
     
 ## Prerequisites
 
-    https://github.com/afrantisak/docker.mk
+* https://github.com/afrantisak/docker.mk
