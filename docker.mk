@@ -16,6 +16,9 @@ tarball:
 tarball-clean:
 	rm -f $(image_name).tar $(image_name).tar.gz
 
+push:
+	$(docker_cmd) push $(image_name)
+
 debug:
 	$(docker_cmd) run --rm -t -i $(image_name) /bin/bash
 

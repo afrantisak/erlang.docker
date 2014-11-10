@@ -1,4 +1,4 @@
 include docker.mk
 
-image_name = kerl.17.3
+image_name = afrantisak/kerl.17.3
 
