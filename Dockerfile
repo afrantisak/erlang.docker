@@ -20,3 +20,10 @@ RUN rm -f /.kerl/archives/*.tar.gz
 RUN ln -s /usr/lib/erlang.kerl.17.3.hipe /usr/lib/erlang
 ENV PATH /usr/lib/erlang/bin:$PATH
 
+# install awscli
+RUN apt-get install -y python-pip groff
+RUN pip install awscli
+
+# install mg just in case
+RUN apt-get install -y mg
+ 
